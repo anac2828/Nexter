@@ -1,0 +1,110 @@
+// COLORS
+$color-primary: #c69963;
+$color-primary-dark: #B28451;
+
+$color-secondary: #101d2c;
+
+$color-gray-light-1: #f9f7f6;
+$color-gray-light-2: #aaa;
+
+$color-gray-dark-1: #54483A;
+$color-gray-dark-2: #6D5D5B;
+
+// FONTS
+
+$font-primary: 'Nunito', sans-serif;
+$font-display: 'Josefin Sans', sans-serif;
+
+// BREAKPOINTS
+
+$bp-largest: 75rem; //1200px
+$bp-medium: 50rem; //800px
+$bp-small: 37.5rem; //800px
+
+
+
+// RESETS
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html{
+  box-sizing: border-box;
+  font-size: 62.5%;// 10px/16px = 62.5%
+
+  @media only screen and (max-width: $bp-largest){
+    font-size: 50%; //8px/16px = 50%
+  }
+}
+
+body{
+  font-family: $font-primary;
+  color: $color-gray-dark-2;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.container{
+  display: grid;
+  // first row -  80% of the viewport height
+  // second row - height will adjust to fit the content
+  // third row - height will adjust depending the on with of the viewport width
+// fourth, fifth and last row - height will adjust to fit the content
+
+  grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  // grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+
+  grid-template-columns: 8rem  minmax(6rem, 1fr) repeat(4, minmax(min-content, 3fr)) minmax(6rem, 1fr);
+  grid-template-areas:
+  
+  "sidebar header header header header realtors realtors"
+  "sidebar . features features features features. "
+  "sidebar pictures pictures pictures content content content"
+  "sidebar . homes homes homes homes ."
+  "sidebar gallery gallery gallery gallery gallery gallery"
+  "sidebar footer footer footer footer footer footer";
+
+  @media only screen and (max-width: $bp-largest){
+    
+    grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+    grid-template-columns: minmax(6rem, 1fr) repeat(4, minmax(min-content, 3fr)) minmax(6rem, 1fr);
+    
+    grid-template-areas:
+ 
+    "sidebar sidebar sidebar sidebar sidebar sidebar"
+    "header header header header realtors realtors"
+    ". features features features features. "
+    "pictures pictures pictures content content content"
+    ". homes homes homes homes ."
+    "gallery gallery gallery gallery gallery gallery"
+    "footer footer footer footer footer footer";
+  }
+
+  @media only screen and (max-width: $bp-medium){
+    
+    grid-template-rows: 6rem calc(100vh - 6rem) repeat(7, min-content);
+    
+    grid-template-areas:
+ 
+    "sidebar sidebar sidebar sidebar sidebar sidebar"
+    "header header header header header header"
+    "realtors realtors realtors realtors realtors realtors"
+    ". features features features features. "
+    "content content content content content content"
+    "pictures pictures pictures pictures pictures pictures"
+    ". homes homes homes homes ."
+    "gallery gallery gallery gallery gallery gallery"
+    "footer footer footer footer footer footer";
+  }
+}
+
+// UTILS
+
+.mb-sm { margin-bottom: 2rem; }
+.mb-md { margin-bottom: 3rem; }
+.mb-lg { margin-bottom: 4rem; }
+.mb-xl { margin-bottom: 8rem; }
