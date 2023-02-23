@@ -2,7 +2,7 @@
   "name": "nextercss-redo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "default": "index.html",
   "scripts": {
     "watch:sass": "node-sass sass/main.scss css/styles.css -w",
     "devserver": "live-server --browser='chrome'",
